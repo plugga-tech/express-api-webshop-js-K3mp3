@@ -4,16 +4,16 @@
 
 // HÄMTA ALLA USERS // SKICKA INTE MED LÖSENORD // BARA ID, NAMN + EMAIL PÅ ALLA USERS
 # @name getUsers
-GET http://localhost:3000/api/users
+GET http://localhost:3000/api/users/
 
 ###
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-POST http://localhost:3000/api/users/
+POST http://localhost:3000/api/users/userId
 Content-Type: application/json
 
 {
-  "id": "// EN USER ID"
+  "_id": "64184724b441fee5f3b97d29"
 }
 
 ###
@@ -23,8 +23,8 @@ POST http://localhost:3000/api/users/add
 Content-Type: application/json
 
 {
-  "name": "Test Testsson",
-  "email": "test@mail.com",
+  "username": "Melvin Kempe",
+  "email": "melvin@mail.com",
   "password": "test"
 }
 
@@ -35,8 +35,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "// EN USER EMAIL",
-  "password": "// EN USER EMAIL"
+  "email": "melvin@mail.com",
+  "password": "test"
 }
 
 ###
@@ -48,12 +48,12 @@ Content-Type: application/json
 // HÄMTA ALLA PRODUKTER
 
 # @name getProducts
-GET http://localhost:3000/api/products
+GET http://localhost:3000/api/products/
 
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/ // ID PÅ PRODUKT
+GET http://localhost:3000/api/products/64186e9b799313f94c4b0241
 
 ###
 
@@ -65,7 +65,7 @@ Content-Type: application/json
   "name": "Produkt 1",
   "description": "Beskrivning av produkt 1",
   "price": 100, 
-  "lager": 10
+  "stock": 10
 }
 
 ###
