@@ -3,7 +3,7 @@ var router = express.Router();
 const fs = require("fs");
 const crypto = require("crypto-js");
 const { ObjectId } = require('mongodb');
-const productModel = require ("../models/product-model")
+const productModel = require ("../models/product-model");
 
 router.get('/', async(req, res, next) => {
     const allProducts = await productModel.find();

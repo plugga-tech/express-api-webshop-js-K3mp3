@@ -3,8 +3,7 @@ var router = express.Router();
 const fs = require("fs");
 const crypto = require("crypto-js");
 const { ObjectId } = require('mongodb');
-//const BlogModel = require ("../models/blog_models");
-const UserModel = require ("../models/user-models")
+const UserModel = require ("../models/user-models");
 
 
 /* GET users listing. */
@@ -27,7 +26,7 @@ router.delete("/:id", async(req, res) => {
   res.status(200).json("User successfully deleted!");
 })
 
-router.post("/userId", async(req, res) => {
+router.post("/", async(req, res) => {
   const {_id} = req.body;
   const user = await UserModel.findById({_id});
   res.status(200).json(user);

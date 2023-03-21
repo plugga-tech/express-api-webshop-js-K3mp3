@@ -9,7 +9,7 @@ GET http://localhost:3000/api/users/
 ###
 
 // HÄMTA SPECIFIK USER // SKICKA HELA OBJEKTET
-POST http://localhost:3000/api/users/userId
+POST http://localhost:3000/api/users/
 Content-Type: application/json
 
 {
@@ -62,10 +62,10 @@ POST http://localhost:3000/api/products/add
 Content-Type: application/json
 
 {
-  "name": "Produkt 1",
-  "description": "Beskrivning av produkt 1",
-  "price": 100, 
-  "stock": 10
+  "name": "Produkt 2",
+  "description": "Beskrivning av produkt 2",
+  "price": 99, 
+  "stock": 17
 }
 
 ###
@@ -79,14 +79,14 @@ POST http://localhost:3000/api/orders/add
 Content-Type: application/json
 
 {
-  "user": "{{getUsers.response.body.$[0].id}}",
+  "user": "64184183c8e7ef0e727e47a3",
       "products": [
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "64186e9b799313f94c4b0241",
       "quantity": 1
     },
     {
-      "productId": "// ID PÅ EN PRODUKT",
+      "productId": "64196f04c681d8634b8844c8",
       "quantity": 2
     }
   ]
