@@ -33,6 +33,7 @@ router.post("/", async(req, res) => {
 })
 
 router.post("/add", async(req, res) => {
+  console.log("body", req.body);
   let newUser = await UserModel.create({
     username: req.body.username,
     password: crypto.SHA3(req.body.password).toString(),

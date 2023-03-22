@@ -52,9 +52,9 @@ function createUser(e) {
   const inputPassword = document.querySelector(".create-password");
   const inputEmail = document.querySelector(".create-email");
 
-  let username = {username: inputUsername.value};
-  let password = {password: inputPassword.value};
-  let email = {email: inputEmail.value};
+  let username = inputUsername.value;
+  let password = inputPassword.value;
+  let email = inputEmail.value;
 
   let createUser = {
     username: username,
@@ -70,9 +70,6 @@ function createUser(e) {
 
 function createUserInServer(createUser) {
   console.log("createUser", createUser);
-  JSON.stringify(createUser);
-  console.log("stringify", createUser);
-  console.log(createUser.username);
     fetch("http://localhost:3000/api/users/add", {
             method: "POST",
             headers: {
@@ -84,5 +81,5 @@ function createUserInServer(createUser) {
         .then(createUser => {
             console.log(createUser);
         })
-        .catch(console.log("fel"));
+        .catch(err => console.log("fel", err));
 }
