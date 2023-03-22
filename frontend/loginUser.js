@@ -40,49 +40,45 @@ function createLoginDesign() {
     loginForm.appendChild(createEmail);
     loginForm.appendChild(createUserBtn);
 
-    createUserBtn.addEventListener("click", createUser);
+    createUserBtn.addEventListener("click", loginUser);
 }
 
 createLoginDesign();
 
 
-function createUser(e) {
+function loginUser(e) {
   e.preventDefault();
   const inputUsername = document.querySelector(".create-username");
   const inputPassword = document.querySelector(".create-password");
   const inputEmail = document.querySelector(".create-email");
 
-  let username = {username: inputUsername.value};
-  let password = {password: inputPassword.value};
-  let email = {email: inputEmail.value};
+  let loginUser = {
+    username: inputUsername.value,
+    password: inputPassword.value,
+    email: inputEmail.value
+  };
 
-  let createUser = {
-    username: username,
-    password: password,
-    email: email
-  }
+  console.log("loginUser", loginUser);
 
-  console.log(username, password, email);
+  fetch("http://localhost:3000/api/users/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginUser)
+    })
+    .then(res => res.json())
+    .then(result => {
+        if (result) {
+            console.log("result", result);
+            userGreeting.innerText = `Good morning ${result.username}`;
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("id", result.id);
+        } else {
+            userGreeting.innerText = "Failed login attempt, please check your username and password!"
+        }
+    })
 
-  createUserInServer(createUser);
-}
-
-
-function createUserInServer(createUser) {
-  console.log("createUser", createUser);
-  JSON.stringify(createUser);
-  console.log("stringify", createUser);
-  console.log(createUser.username);
-    fetch("http://localhost:3000/api/users/add", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(createUser),
-        })
-        .then(res => res.json())
-        .then(createUser => {
-            console.log(createUser);
-        })
-        .catch(console.log("fel"));
+    loginUsername.innerHTML = "";
+    loginPassword.innerHTML = "";
 }
