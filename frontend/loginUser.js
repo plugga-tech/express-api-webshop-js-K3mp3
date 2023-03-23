@@ -4,6 +4,11 @@ fetch("http://localhost:3000/api/users")
     console.log(data);
 });
 
+let loggedinUser = localStorage.getItem("username");
+if(loggedinUser) {
+    console.log(`Good morning ${loggedinUser}`);
+}
+
 function createLoginDesign() {
     const loginForm = document.createElement("form");
     const loginHeading = document.createElement("h1");
@@ -60,10 +65,13 @@ function loginUser(e) {
     .then(res => res.json())
     .then(result => {
         if (result) {
+            alert("hej");
             console.log("result", result);
             //userGreeting.innerText = `Good morning ${result.username}`;
             localStorage.setItem("username", result.username);
             localStorage.setItem("id", result.id);
+
+            console.log("username", result.username, "id", result.id);
 
             showProducts(loginUser);
         } else {
@@ -71,11 +79,12 @@ function loginUser(e) {
         }
     })
 
-    username.innerHTML = "";
+    /*username.innerHTML = "";
     password.innerHTML = "";
-    email.innerHTML = "";
+    email.innerHTML = "";*/
 }
 
 function showProducts(loginUser) {
     console.log("loginUser", loginUser);
 }
+

@@ -33,7 +33,7 @@ function createLoginDesign() {
     createPassword.classList.add("create-password");
     createEmail.classList.add("create-email");
 
-    document.body.appendChild(loginForm)
+    document.body.appendChild(loginForm);
     loginForm.appendChild(loginHeading);
     loginForm.appendChild(createUserName);
     loginForm.appendChild(createPassword);

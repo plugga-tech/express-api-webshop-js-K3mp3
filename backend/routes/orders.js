@@ -19,17 +19,6 @@ router.get("/:productId", async(req, res) => {
 
 router.post("/add", async(req, res) => {
     const order = await orderModel.create(req.body);
-   
-    /*const products = order.products;
-    console.log(products)
-
-    products.forEach(async ({productId, quantity}) => {
-        console.log(productId, quantity);
-        const product = await productModel.findById({_id: productId});
-        console.log("product", product);
-    });*/
-
-   
     const orderedProduct = order.products;
 
     orderedProduct.map(async ({productId, quantity}) => {
