@@ -20,7 +20,8 @@ router.post("/add", async(req, res) => {
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
-      stock: req.body.stock
+      stock: req.body.stock,
+      category: req.body.category
     });
 
     if(newProduct.name) {

@@ -1,13 +1,3 @@
-
-/*let userList = document.querySelector(".userList");
-let newUser = document.querySelector(".newUser");
-let newUserPassword = document.querySelector(".newUserPassword");
-let saveUserBtn = document.querySelector(".saveUserBtn");
-let loginUsername = document.querySelector(".loginUsername");
-let loginPassword = document.querySelector(".loginPassword");
-let loginUserBtn = document.querySelector(".loginUserBtn");
-let userGreeting = document.querySelector(".userGreeting");*/
-
 fetch("http://localhost:3000/api/users")
 .then(res => res.json())
 .then(data => {
@@ -58,7 +48,7 @@ function loginUser(e) {
     email: inputEmail.value
   };
 
-  console.log("loginUser", loginUser);
+  //console.log("loginUser", loginUser);
 
   fetch("http://localhost:3000/api/users/login", {
         method: "POST",
@@ -71,14 +61,21 @@ function loginUser(e) {
     .then(result => {
         if (result) {
             console.log("result", result);
-            userGreeting.innerText = `Good morning ${result.username}`;
+            //userGreeting.innerText = `Good morning ${result.username}`;
             localStorage.setItem("username", result.username);
             localStorage.setItem("id", result.id);
+
+            showProducts(loginUser);
         } else {
-            userGreeting.innerText = "Failed login attempt, please check your username and password!"
+            console.log("Failed login attempt, please check your username and password!");
         }
     })
 
-    loginUsername.innerHTML = "";
-    loginPassword.innerHTML = "";
+    username.innerHTML = "";
+    password.innerHTML = "";
+    email.innerHTML = "";
+}
+
+function showProducts(loginUser) {
+    console.log("loginUser", loginUser);
 }
