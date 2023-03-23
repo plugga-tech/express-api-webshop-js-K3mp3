@@ -35,6 +35,8 @@ function createLoginDesign() {
     loginForm.appendChild(createEmail);
     loginForm.appendChild(createUserBtn);
 
+    console.log("hej", createEmail, createPassword)
+
     createUserBtn.addEventListener("click", loginUser);
 }
 
@@ -53,35 +55,35 @@ function loginUser(e) {
     email: inputEmail.value
   };
 
-  //console.log("loginUser", loginUser);
+  console.log("loginUser", loginUser);
 
-  fetch("http://localhost:3000/api/users/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginUser)
-    })
-    .then(res => res.json())
-    .then(result => {
-        if (result) {
-            alert("hej");
-            console.log("result", result);
-            //userGreeting.innerText = `Good morning ${result.username}`;
-            localStorage.setItem("username", result.username);
-            localStorage.setItem("id", result.id);
+//   fetch("http://localhost:3000/api/users/login", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(loginUser)
+//     })
+//     .then(res => res.json())
+//     .then(result => {
+//         if (result) {
+//             alert("hej");
+//             console.log("result", result);
+//             //userGreeting.innerText = `Good morning ${result.username}`;
+//             localStorage.setItem("username", result.username);
+//             localStorage.setItem("id", result.id);
 
-            console.log("username", result.username, "id", result.id);
+//             console.log("username", result.username, "id", result.id);
 
-            showProducts(loginUser);
-        } else {
-            console.log("Failed login attempt, please check your username and password!");
-        }
-    })
+//             showProducts(loginUser);
+//         } else {
+//             console.log("Failed login attempt, please check your username and password!");
+//         }
+//     })
 
-    /*username.innerHTML = "";
-    password.innerHTML = "";
-    email.innerHTML = "";*/
+//     username.innerHTML = "";
+//     password.innerHTML = "";
+//     email.innerHTML = "";
 }
 
 function showProducts(loginUser) {

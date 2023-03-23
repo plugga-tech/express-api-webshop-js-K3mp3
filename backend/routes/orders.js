@@ -17,6 +17,18 @@ router.get("/:productId", async(req, res) => {
     res.status(200).json(product);
 })
 
+router.post("/user", async(req, res) => {
+  let token  = req.body.token
+  console.log("token", token)
+  
+  if(token === process.env.TOKEN_URI) {
+      const product = await orderModel.find().populate("user");
+      res.status(200).json(product);
+  } else {
+      res.status(401).json("401, unauthorised, wrong token")
+  }
+})
+
 router.post("/add", async(req, res) => {
     const order = await orderModel.create(req.body);
     const orderedProduct = order.products;

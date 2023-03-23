@@ -45,12 +45,13 @@ router.post("/add", async(req, res) => {
 })
 
 router.post("/login", async(req, res) => {
-  const {username, password, email} = req.body;
-  console.log("username, password and email", username, password, email)
-  const foundUser = await UserModel.findOne({username: username});
+  const {password, email} = req.body;
+  console.log("username, password and email", password, email)
+  const foundUser = await UserModel.findOne({email: email});
+  console.log("foundUser", foundUser);
 
   if(crypto.SHA3(password).toString() === foundUser.password) {
-    res.status(201).json({username: foundUser.username, id: foundUser._id})
+    res.status(201).json({email: foundUser.email, id: foundUser._id})
   } else {
     console.log("fel");
   }
