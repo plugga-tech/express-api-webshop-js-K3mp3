@@ -16,17 +16,18 @@ router.get("/:productId", async(req, res) => {
 })
 
 router.post("/add", async(req, res) => {
-    let newCategory = await categoryModel.create({
-      name: req.body.name,
-    })
-
     let token  = req.body.token
-
-    if(token = process.env.TOKEN_URI) {
+    console.log("token", token)
+    
+    if(token === process.env.TOKEN_URI) {
+        let newCategory = await categoryModel.create({
+            name: req.body.name,
+        })
         console.log("newProduct", newCategory);
         res.status(201).json(newCategory);
+    } else {
+        res.status(401).json("unauthorised, wrong token")
     }
-    console.log("token", token);
   })
   
 
