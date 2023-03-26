@@ -1,23 +1,3 @@
-let loggedinUser = localStorage.getItem("username");
-if(loggedinUser) {
-    console.log(`Tjena ${loggedinUser}`);
-}
-
-function createHtmlElements() {
-    const productHeading = document.createElement("h1");
-    const productName = document.createElement("li");
-
-    productHeading.innerHTML = "Available products";
-
-    productName.classList.add("product-name");
-
-    document.body.appendChild(productHeading);
-    productHeading.appendChild(productName);
-}
-
-createHtmlElements();
-
-
 fetch("http://localhost:3000/api/products")
 .then(res => res.json())
 .then(data => {
@@ -27,6 +7,12 @@ fetch("http://localhost:3000/api/products")
 
 
 function printProducts(data) {
-    console.log("data", data);
-    
+    data.map(data => {
+        const productName = document.createElement("li");
+        productName.innerText = data.name;
+
+        document.body.appendChild(productName);
+        
+        console.log("productName", productName.innerText);
+    })
 }
