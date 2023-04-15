@@ -53,7 +53,7 @@ GET http://localhost:3000/api/products/
 ###
 
 // HÄMTA SPECIFIK PRODUKT
-GET http://localhost:3000/api/products/64186e9b799313f94c4b0241
+GET http://localhost:3000/api/products/641c6bb9799b44d0c1ac3268
 
 ###
 

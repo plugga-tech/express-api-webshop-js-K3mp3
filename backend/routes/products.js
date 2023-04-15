@@ -10,9 +10,16 @@ router.get('/', async(req, res, next) => {
     res.status(200).json(allProducts);
   });
 
-router.get("/:productId", async(req, res) => {
-    const product = await productModel.findById();
+router.get("/:id", async(req, res) => {
+  try {
+    const product = await productModel.findById(req.params.id);
+
     res.status(200).json(product);
+    console.log(product);
+  } catch (err) {
+    console.log("Err", err);
+    res.status(401).json({message: "Wrong id, please try again"});
+  }
 })
 
 router.post("/add", async(req, res) => {
